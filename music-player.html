@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Music Player</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Geom:ital,wght@0,300..900;1,300..900&display=swap"
+            rel="stylesheet">
+        <style>
+            body {
+                background-color: #494D5F;
+                color: white;
+                font-family: 'Geom', sans-serif;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+                margin: 0;
+                text-align: center;
+            }
+
+            #lyrics-screen {
+                font-size: 2.5rem;
+                font-weight: bold;
+                min-height: 100px;
+                padding: 20px;
+                color: #E5EAF5;
+                /* Gold Color */
+                text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+                transition: opacity 0.5s;
+            }
+
+            button {
+                font-family: 'Geom', sans-serif;
+                padding: 15px 30px;
+                font-size: 1.2rem;
+                cursor: pointer;
+                background-color: #A0D2EB;
+                color: rgb(51, 51, 51);
+                font-weight: bold;
+                border: none;
+                border-radius: 5px;
+                margin-top: 20px;
+                text-shadow: #494D5F;
+            }
+
+            button:hover {
+                background-color: #7195a7;
+            }
+
+            .appear {
+                animation: fadeIn 0.5s ease-in;
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div id="lyrics-screen">♫ Click Button to Play ♫</div>
+
+        <button onclick="startPlayer()">START MUSIC</button>
+
+        <script>
+            const music = [
+                { text: "Ophelia...", delay: 3600 },
+                { text: "Keep it one hundred on the land... ", delay: 2000 },
+                { text: "The sea...", delay: 1000 },
+                { text: "The Sky...", delay: 1000 },
+                { text: "Pledge allegiance to your hands...", delay: 2000 },
+                { text: "Your team...", delay: 1000 },
+                { text: "Your vibes...", delay: 1000 },
+                { text: "Don't care where the hell you been...", delay: 1500 },
+                { text: "'Cause now...", delay: 1500 },
+                { text: "You're mine...", delay: 500 },
+                { text: "It's 'bout to be the sleepless night...", delay: 2500 },
+                { text: "You've been dreaming of...", delay: 3000 },
+                { text: "The fate of Ophelia...", delay: 2000 }
+            ];
+
+            function sleep(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+
+            async function startPlayer() {
+                const screen = document.getElementById("lyrics-screen");
+                const startButton = document.querySelector("button");
+
+                let audio = new Audio("Ophelia.mp3");
+                audio.play();
+
+                // Disable Button After Clicked
+                startButton.disabled = true;
+                startButton.innerText = "Playing...";
+
+                // Display Lyrics
+                for (let line of music) {
+                    screen.innerText = line.text;
+
+                    // Animation Effect
+                    screen.classList.remove("appear"); // Reset Animation
+                    void screen.offsetWidth; // CSS Trick to Trigger Reflow
+                    screen.classList.add("appear"); // Start Animation
+
+                    await sleep(line.delay);
+                }
+
+                screen.innerText = "Finished!";
+                startButton.disabled = false;
+                startButton.innerText = "START MUSIC";
+            }
+        </script>
+    </body>
+
+</html>
