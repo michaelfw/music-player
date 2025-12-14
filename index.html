@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>My Music Player</title>
+        <title>Pesawat Kertas 365 Hari</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Geom:ital,wght@0,300..900;1,300..900&display=swap"
@@ -24,7 +24,7 @@
             }
 
             #lyrics-screen {
-                font-size: 2.5rem;
+                font-size: 2rem;
                 font-weight: bold;
                 min-height: 100px;
                 padding: 20px;
@@ -39,7 +39,7 @@
                 padding: 15px 30px;
                 font-size: 1.2rem;
                 cursor: pointer;
-                background-color: #A0D2EB;
+                background-color: white;
                 color: rgb(51, 51, 51);
                 font-weight: bold;
                 border: none;
@@ -50,6 +50,16 @@
 
             button:hover {
                 background-color: #7195a7;
+            }
+
+            #footer {
+                bottom: 0;
+                position: absolute;
+                font-size: 1.2rem;
+                font-weight: bold;
+                min-height: 30px;
+                padding: 20px;
+                color: #948c8c;
             }
 
             .appear {
@@ -76,21 +86,43 @@
 
         <button onclick="startPlayer()">START MUSIC</button>
 
+        <div id="footer">Cha</div>
+
         <script>
+            const file = "pesawat-kertas-365-hari.mp3";
+
             const music = [
-                { text: "Ophelia...", delay: 3800 },
-                { text: "Keep it one hundred on the land... ", delay: 2200 },
-                { text: "The sea...", delay: 1000 },
-                { text: "The Sky...", delay: 1000 },
-                { text: "Pledge allegiance to your hands...", delay: 2000 },
-                { text: "Your team...", delay: 1000 },
-                { text: "Your vibes...", delay: 1000 },
-                { text: "Don't care where the hell you been...", delay: 1500 },
-                { text: "'Cause now...", delay: 1500 },
-                { text: "You're mine...", delay: 500 },
-                { text: "It's 'bout to be the sleepless night...", delay: 2500 },
-                { text: "You've been dreaming of...", delay: 3000 },
-                { text: "The fate of Ophelia...", delay: 2000 }
+                { text: "♫ Pesawat Kertas 365 Hari ♫", delay: 13000 },
+                { text: "♫ Kutatap langit di pagi hari ♫", delay: 4000 },
+                { text: "♫ Kuawali hari dengan doa ♫", delay: 5000 },
+                { text: "♫ Semoga satu hari ini bisa ♫", delay: 4500 },
+                { text: "♫ Dipenuhi oleh senyum ♫", delay: 4500 },
+                { text: "♫ Walaupun terkadang hujan turun ♫", delay: 4500 },
+                { text: "♫ Dan air mata juga mengalir ♫", delay: 4500 },
+                { text: "♫ Di hari yang tak berjalan dengan mulus ♫", delay: 4500 },
+                { text: "♫ Besok pun tetap semangat ♫", delay: 5000 },
+                { text: "♫ Di dalam mimpiku selalu ♫", delay: 4200 },
+                { text: "♫ Terlihat ada diriku sendiri ♫", delay: 4500 },
+                { text: "♫ Yang dengan bebasnya ♫", delay: 2500 },
+                { text: "♫ Melakukan semua ♫", delay: 2000 },
+                { text: "♫ Hal yang ingin aku lakukan ♫", delay: 3500 },
+                { text: "♫ Hidup bagaikan pesawat kertas ♫", delay: 4500 },
+                { text: "♫ Terbang dan pergi ♫", delay: 2500 },
+                { text: "♫ Membawa impian ♫", delay: 3000 },
+                { text: "♫ Sekuat tenaga ♫", delay: 2200 },
+                { text: "♫ Dengan hembusan angin ♫", delay: 2500 },
+                { text: "♫ Terus melaju terbang ♫", delay: 3500 },
+                { text: "♫ Jangan bandingkan ♫", delay: 2300 },
+                { text: "♫ Jarak terbangnya ♫", delay: 2500 },
+                { text: "♫ Tapi bagaimana ♫", delay: 2000 },
+                { text: "♫ Dan apa yang dilalui ♫", delay: 3500 },
+                { text: "♫ Karena itulah ♫", delay: 2000 },
+                { text: "♫ Satu hal yang penting ♫", delay: 2500 },
+                { text: "♫ Selalu ♫", delay: 1300 },
+                { text: "♫ Sesuai kata hati ♫", delay: 3000 },
+                { text: "♫ San Byaku ♫", delay: 1100 },
+                { text: "♫ Roku juu go nichi ♫", delay: 4500 },
+                { text: "♫ ... ♫", delay: 11000 },
             ];
 
             function sleep(ms) {
@@ -101,7 +133,7 @@
                 const screen = document.getElementById("lyrics-screen");
                 const startButton = document.querySelector("button");
 
-                let audio = new Audio("Ophelia.mp3");
+                let audio = new Audio(file);
                 audio.play();
 
                 // Disable Button After Clicked
